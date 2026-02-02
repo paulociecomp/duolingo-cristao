@@ -1,9 +1,9 @@
 <% flash.each do |type, message| %>
   <% color_class = case type.to_sym
-                   when :notice, :success then "bg-green-50 border-green-200 text-green-800"
-                   when :alert, :error then "bg-red-50 border-red-200 text-red-800"
-                   when :warning then "bg-amber-50 border-amber-200 text-amber-800"
-                   else "bg-blue-50 border-blue-200 text-blue-800"
+                   when :notice, :success then "bg-[#58CC02]/20 border-[#58CC02]/50 text-[#58CC02]"
+                   when :alert, :error then "bg-[#FF4B4B]/20 border-[#FF4B4B]/50 text-[#FF4B4B]"
+                   when :warning then "bg-[#FFC800]/20 border-[#FFC800]/50 text-[#FFC800]"
+                   else "bg-[#1CB0F6]/20 border-[#1CB0F6]/50 text-[#1CB0F6]"
                    end %>
   <div class="mb-4 p-4 rounded-lg border <%= color_class %>" data-controller="flash" data-flash-timeout-value="5000">
     <div class="flex items-center justify-between">

@@ -1,7 +1,7 @@
 <div class="max-w-2xl mx-auto">
   <!-- Header -->
   <div class="mb-8">
-    <%= link_to tracks_path, class: "inline-flex items-center text-gray-500 hover:text-gray-700 mb-4" do %>
+    <%= link_to tracks_path, class: "inline-flex items-center text-gray-400 hover:text-gray-200 mb-4" do %>
       <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
       </svg>
@@ -11,26 +11,26 @@
     <div class="flex items-center gap-4 mb-4">
       <div class="text-5xl"><%= @track.icon %></div>
       <div>
-        <h1 class="text-2xl font-bold text-gray-900"><%= @track.name %></h1>
-        <p class="text-gray-600"><%= @track.description %></p>
+        <h1 class="text-2xl font-bold text-white"><%= @track.name %></h1>
+        <p class="text-gray-400"><%= @track.description %></p>
       </div>
     </div>
 
     <% if @progress %>
-      <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
+      <div class="bg-[#1A2C32] rounded-xl p-4 shadow-sm border border-[#37464F]">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-sm font-medium text-gray-700">Progresso</span>
+          <span class="text-sm font-medium text-gray-300">Progresso</span>
           <span class="text-sm font-bold" style="color: <%= @track.color %>;"><%= @progress.completion_percentage %>%</span>
         </div>
-        <div class="w-full bg-gray-200 rounded-full h-3">
+        <div class="w-full bg-[#37464F] rounded-full h-3">
           <div class="rounded-full h-3 transition-all duration-500" style="width: <%= @progress.completion_percentage %>%; background-color: <%= @track.color %>;"></div>
         </div>
-        <div class="mt-2 text-xs text-gray-500">
+        <div class="mt-2 text-xs text-gray-400">
           <%= @progress.completed_lessons_count %> de <%= @track.total_lessons %> lições completas
         </div>
       </div>
     <% else %>
-      <%= button_to start_track_path(@track.slug), method: :post, class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-xl transition" do %>
+      <%= button_to start_track_path(@track.slug), method: :post, class: "w-full bg-[#58CC02] hover:bg-[#4CAF00] text-white font-semibold py-3 px-6 rounded-xl transition" do %>
         Começar Trilha
       <% end %>
     <% end %>
@@ -41,14 +41,14 @@
     <% @units.each_with_index do |unit, unit_index| %>
       <div class="relative">
         <!-- Unit Header -->
-        <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200 mb-4">
+        <div class="bg-[#1A2C32] rounded-xl p-4 shadow-sm border border-[#37464F] mb-4">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center text-xl" style="background-color: <%= @track.color %>22;">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center text-xl" style="background-color: <%= @track.color %>33;">
               <%= unit.icon %>
             </div>
             <div>
-              <h2 class="font-bold text-gray-900"><%= unit.name %></h2>
-              <p class="text-sm text-gray-500"><%= unit.lessons.size %> lições</p>
+              <h2 class="font-bold text-white"><%= unit.name %></h2>
+              <p class="text-sm text-gray-400"><%= unit.lessons.size %> lições</p>
             </div>
           </div>
         </div>
@@ -62,16 +62,16 @@
 
             <div class="relative">
               <% if lesson_index > 0 %>
-                <div class="absolute left-1/2 -top-4 w-0.5 h-4 <%= completed ? 'bg-green-400' : 'bg-gray-200' %>"></div>
+                <div class="absolute left-1/2 -top-4 w-0.5 h-4 <%= completed ? 'bg-[#58CC02]' : 'bg-[#37464F]' %>"></div>
               <% end %>
 
               <% if is_locked %>
-                <div class="w-16 h-16 rounded-full bg-gray-100 border-4 border-gray-200 flex items-center justify-center cursor-not-allowed">
+                <div class="w-16 h-16 rounded-full bg-[#232F36] border-4 border-[#37464F] flex items-center justify-center cursor-not-allowed">
                   <span class="text-2xl">🔒</span>
                 </div>
               <% else %>
                 <%= link_to lesson_path(lesson), class: "block" do %>
-                  <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-200 transform hover:scale-110 <%= completed ? 'bg-green-500 border-4 border-green-400' : is_current ? 'bg-indigo-500 border-4 border-indigo-400 animate-pulse' : 'bg-gray-200 border-4 border-gray-300 hover:bg-gray-300' %>">
+                  <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-200 transform hover:scale-110 <%= completed ? 'bg-[#58CC02] border-4 border-[#4CAF00]' : is_current ? 'bg-[#1CB0F6] border-4 border-[#0EA5E9] animate-pulse' : 'bg-[#37464F] border-4 border-[#4A5C66] hover:bg-[#4A5C66]' %>">
                     <% if completed %>
                       <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
@@ -81,7 +81,7 @@
                     <% end %>
                   </div>
                   <div class="text-center mt-2 max-w-24">
-                    <span class="text-xs font-medium <%= completed ? 'text-green-600' : is_current ? 'text-indigo-600' : 'text-gray-600' %>">
+                    <span class="text-xs font-medium <%= completed ? 'text-[#58CC02]' : is_current ? 'text-[#1CB0F6]' : 'text-gray-400' %>">
                       <%= truncate(lesson.name, length: 20) %>
                     </span>
                   </div>
@@ -97,8 +97,8 @@
   <% if @units.empty? %>
     <div class="text-center py-12">
       <div class="text-6xl mb-4">🚧</div>
-      <h2 class="text-xl font-semibold text-gray-900 mb-2">Trilha em construção</h2>
-      <p class="text-gray-600">Estamos preparando as lições desta trilha. Volte em breve!</p>
+      <h2 class="text-xl font-semibold text-white mb-2">Trilha em construção</h2>
+      <p class="text-gray-400">Estamos preparando as lições desta trilha. Volte em breve!</p>
     </div>
   <% end %>
 </div>

@@ -1,23 +1,23 @@
 <div class="max-w-lg mx-auto">
   <div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">Revisão Espaçada</h1>
-    <p class="text-gray-600">Revise exercícios para fixar o conhecimento</p>
+    <h1 class="text-3xl font-bold text-white mb-2">Revisão Espaçada</h1>
+    <p class="text-gray-400">Revise exercícios para fixar o conhecimento</p>
   </div>
 
   <!-- Stats -->
   <div class="grid grid-cols-2 gap-4 mb-8">
-    <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
-      <div class="text-3xl font-bold text-indigo-600"><%= @stats[:due_today] %></div>
-      <div class="text-sm text-gray-500">Para revisar hoje</div>
+    <div class="bg-[#1A2C32] rounded-xl p-4 border border-[#37464F] text-center">
+      <div class="text-3xl font-bold text-[#1CB0F6]"><%= @stats[:due_today] %></div>
+      <div class="text-sm text-gray-400">Para revisar hoje</div>
     </div>
-    <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
-      <div class="text-3xl font-bold text-green-600"><%= @stats[:mastered] %></div>
-      <div class="text-sm text-gray-500">Dominados</div>
+    <div class="bg-[#1A2C32] rounded-xl p-4 border border-[#37464F] text-center">
+      <div class="text-3xl font-bold text-[#58CC02]"><%= @stats[:mastered] %></div>
+      <div class="text-sm text-gray-400">Dominados</div>
     </div>
   </div>
 
   <% if @cards_due.any? %>
-    <%= link_to review_path(@cards_due.first), class: "block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-6 rounded-xl transition text-center mb-6" do %>
+    <%= link_to review_path(@cards_due.first), class: "block w-full bg-[#1CB0F6] hover:bg-[#0EA5E9] text-white font-semibold py-4 px-6 rounded-xl transition text-center mb-6" do %>
       <div class="flex items-center justify-center gap-2">
         <span class="text-xl">🔄</span>
         <span>Iniciar Revisão (<%= @cards_due.size %> cards)</span>
@@ -26,13 +26,13 @@
 
     <div class="space-y-3">
       <% @cards_due.limit(5).each do |card| %>
-        <div class="bg-white rounded-lg border border-gray-200 p-4">
+        <div class="bg-[#1A2C32] rounded-lg border border-[#37464F] p-4">
           <div class="flex items-center justify-between">
             <div>
-              <div class="font-medium text-gray-900"><%= card.exercise.lesson.name %></div>
-              <div class="text-sm text-gray-500"><%= card.exercise.exercise_type.humanize %></div>
+              <div class="font-medium text-white"><%= card.exercise.lesson.name %></div>
+              <div class="text-sm text-gray-400"><%= card.exercise.exercise_type.humanize %></div>
             </div>
-            <div class="text-sm text-gray-400">
+            <div class="text-sm text-gray-500">
               Intervalo: <%= card.interval_days %>d
             </div>
           </div>
@@ -42,8 +42,8 @@
   <% else %>
     <div class="text-center py-12">
       <div class="text-6xl mb-4">✅</div>
-      <h2 class="text-xl font-semibold text-gray-900 mb-2">Tudo revisado!</h2>
-      <p class="text-gray-600">Não há cards para revisar agora. Continue estudando para adicionar mais!</p>
+      <h2 class="text-xl font-semibold text-white mb-2">Tudo revisado!</h2>
+      <p class="text-gray-400">Não há cards para revisar agora. Continue estudando para adicionar mais!</p>
     </div>
   <% end %>
 </div>

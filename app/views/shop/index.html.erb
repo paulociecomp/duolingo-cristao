@@ -1,28 +1,28 @@
 <div class="max-w-lg mx-auto">
   <div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">Loja</h1>
-    <p class="text-gray-600">Use suas gems para comprar itens especiais</p>
+    <h1 class="text-3xl font-bold text-white mb-2">Loja</h1>
+    <p class="text-gray-400">Use suas gems para comprar itens especiais</p>
 
-    <div class="mt-4 bg-cyan-50 rounded-xl p-4 flex items-center justify-between">
+    <div class="mt-4 bg-[#1CB0F6]/20 rounded-xl p-4 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="text-2xl">💎</span>
-        <span class="text-gray-700">Suas Gems:</span>
+        <span class="text-gray-300">Suas Gems:</span>
       </div>
-      <span class="text-2xl font-bold text-cyan-600"><%= current_user.gems %></span>
+      <span class="text-2xl font-bold text-[#1CB0F6]"><%= current_user.gems %></span>
     </div>
   </div>
 
   <div class="space-y-4">
     <!-- Streak Freeze -->
-    <div class="bg-white rounded-xl border border-gray-200 p-6">
+    <div class="bg-[#1A2C32] rounded-xl border border-[#37464F] p-6">
       <div class="flex items-center gap-4 mb-4">
         <div class="text-4xl">🧊</div>
         <div class="flex-1">
-          <h3 class="font-bold text-gray-900">Streak Freeze</h3>
-          <p class="text-sm text-gray-500">Protege seu streak por 1 dia sem estudar</p>
+          <h3 class="font-bold text-white">Streak Freeze</h3>
+          <p class="text-sm text-gray-400">Protege seu streak por 1 dia sem estudar</p>
         </div>
         <div class="text-right">
-          <div class="flex items-center gap-1 text-cyan-500 font-bold">
+          <div class="flex items-center gap-1 text-[#1CB0F6] font-bold">
             <span>💎</span>
             <span>10</span>
           </div>
@@ -30,20 +30,20 @@
       </div>
 
       <div class="flex items-center justify-between">
-        <div class="text-sm text-gray-500">
-          Você tem: <span class="font-semibold text-gray-700"><%= current_user.streak_freeze_count %>/2</span>
+        <div class="text-sm text-gray-400">
+          Você tem: <span class="font-semibold text-gray-300"><%= current_user.streak_freeze_count %>/2</span>
         </div>
 
         <% if current_user.streak_freeze_count >= 2 %>
-          <button class="bg-gray-200 text-gray-500 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+          <button class="bg-[#37464F] text-gray-400 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
             Limite atingido
           </button>
         <% elsif current_user.gems < 10 %>
-          <button class="bg-gray-200 text-gray-500 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+          <button class="bg-[#37464F] text-gray-400 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
             Gems insuficientes
           </button>
         <% else %>
-          <%= button_to buy_streak_freeze_shop_index_path, method: :post, class: "bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg transition" do %>
+          <%= button_to buy_streak_freeze_shop_index_path, method: :post, class: "bg-[#1CB0F6] hover:bg-[#0EA5E9] text-white font-semibold px-4 py-2 rounded-lg transition" do %>
             Comprar
           <% end %>
         <% end %>
@@ -51,15 +51,15 @@
     </div>
 
     <!-- Refill Lives -->
-    <div class="bg-white rounded-xl border border-gray-200 p-6">
+    <div class="bg-[#1A2C32] rounded-xl border border-[#37464F] p-6">
       <div class="flex items-center gap-4 mb-4">
         <div class="text-4xl">❤️</div>
         <div class="flex-1">
-          <h3 class="font-bold text-gray-900">Restaurar Vidas</h3>
-          <p class="text-sm text-gray-500">Restaura todas as 5 vidas instantaneamente</p>
+          <h3 class="font-bold text-white">Restaurar Vidas</h3>
+          <p class="text-sm text-gray-400">Restaura todas as 5 vidas instantaneamente</p>
         </div>
         <div class="text-right">
-          <div class="flex items-center gap-1 text-cyan-500 font-bold">
+          <div class="flex items-center gap-1 text-[#1CB0F6] font-bold">
             <span>💎</span>
             <span>50</span>
           </div>
@@ -67,20 +67,20 @@
       </div>
 
       <div class="flex items-center justify-between">
-        <div class="text-sm text-gray-500">
-          Vidas atuais: <span class="font-semibold text-red-500"><%= current_user.lives %>/5</span>
+        <div class="text-sm text-gray-400">
+          Vidas atuais: <span class="font-semibold text-[#FF4B4B]"><%= current_user.lives %>/5</span>
         </div>
 
         <% if current_user.lives >= 5 %>
-          <button class="bg-gray-200 text-gray-500 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+          <button class="bg-[#37464F] text-gray-400 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
             Vidas cheias
           </button>
         <% elsif current_user.gems < 50 %>
-          <button class="bg-gray-200 text-gray-500 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+          <button class="bg-[#37464F] text-gray-400 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
             Gems insuficientes
           </button>
         <% else %>
-          <%= button_to buy_lives_shop_index_path, method: :post, class: "bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg transition" do %>
+          <%= button_to buy_lives_shop_index_path, method: :post, class: "bg-[#1CB0F6] hover:bg-[#0EA5E9] text-white font-semibold px-4 py-2 rounded-lg transition" do %>
             Comprar
           <% end %>
         <% end %>
@@ -88,10 +88,10 @@
     </div>
 
     <!-- Life Regeneration Info -->
-    <div class="bg-gray-50 rounded-xl p-4 text-center">
-      <p class="text-sm text-gray-500">
+    <div class="bg-[#232F36] rounded-xl p-4 text-center">
+      <p class="text-sm text-gray-400">
         <% if @life_service.can_play? && !current_user.lives_full? %>
-          Próxima vida em: <span class="font-semibold"><%= @life_service.time_until_next_life / 60 %> minutos</span>
+          Próxima vida em: <span class="font-semibold text-gray-300"><%= @life_service.time_until_next_life / 60 %> minutos</span>
         <% elsif current_user.lives_full? %>
           Todas as vidas disponíveis!
         <% end %>

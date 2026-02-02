@@ -4,7 +4,7 @@ module ApplicationHelper
   def sidebar_link_to(name, path, icon: nil)
     active = current_page?(path)
     base_classes = "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all"
-    active_classes = active ? "bg-indigo-50 text-indigo-700" : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+    active_classes = active ? "bg-[#1CB0F6] text-white" : "text-white hover:bg-[#232F36]"
 
     link_to path, class: "#{base_classes} #{active_classes}" do
       concat content_tag(:span, icon, class: "text-xl") if icon
@@ -15,7 +15,7 @@ module ApplicationHelper
   def mobile_nav_link_to(path, icon:, label:)
     active = current_page?(path)
     base_classes = "flex flex-col items-center gap-1 px-3 py-1"
-    active_classes = active ? "text-indigo-600" : "text-gray-500"
+    active_classes = active ? "text-[#1CB0F6]" : "text-gray-400"
 
     link_to path, class: "#{base_classes} #{active_classes}" do
       concat content_tag(:span, icon, class: "text-xl")
