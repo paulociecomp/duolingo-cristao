@@ -14,13 +14,13 @@ export default class extends Controller {
 
     // Deselect all options
     this.optionTargets.forEach(opt => {
-      opt.classList.remove("border-[#1CB0F6]", "bg-[#1A3A4A]")
-      opt.classList.add("border-[#37464F]", "bg-[#1A2C32]")
+      opt.style.borderColor = "#37464F"
+      opt.style.backgroundColor = "#1A2C32"
     })
 
     // Select clicked option
-    button.classList.remove("border-[#37464F]", "bg-[#1A2C32]")
-    button.classList.add("border-[#1CB0F6]", "bg-[#1A3A4A]")
+    button.style.borderColor = "#1CB0F6"
+    button.style.backgroundColor = "#1A3A4A"
 
     // Update hidden input
     this.answerTarget.value = value

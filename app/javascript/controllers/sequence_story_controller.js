@@ -17,12 +17,14 @@ export default class extends Controller {
     if (eventIndex > -1) {
       // Remove from sequence
       this.orderedEvents.splice(eventIndex, 1)
-      button.classList.remove("opacity-50", "cursor-not-allowed")
+      button.style.opacity = "1"
+      button.style.cursor = "pointer"
       button.disabled = false
     } else {
       // Add to sequence
       this.orderedEvents.push(eventText)
-      button.classList.add("opacity-50", "cursor-not-allowed")
+      button.style.opacity = "0.5"
+      button.style.cursor = "not-allowed"
       button.disabled = true
     }
 
@@ -39,7 +41,8 @@ export default class extends Controller {
     // Re-enable the event button
     this.eventTargets.forEach(btn => {
       if (btn.dataset.event === eventText && btn.disabled) {
-        btn.classList.remove("opacity-50", "cursor-not-allowed")
+        btn.style.opacity = "1"
+        btn.style.cursor = "pointer"
         btn.disabled = false
       }
     })
@@ -52,11 +55,11 @@ export default class extends Controller {
     if (this.orderedEvents.length > 0) {
       this.placeholderTarget.classList.add("hidden")
       this.sequenceTarget.innerHTML = this.orderedEvents.map((event, index) => `
-        <div class="flex items-center gap-3 p-3 bg-[#1A3A4A] border-2 border-[#1CB0F6] rounded-lg">
-          <span class="w-6 h-6 rounded-full bg-[#1CB0F6] text-white text-sm flex items-center justify-center font-bold">${index + 1}</span>
+        <div class="flex items-center gap-3 p-3 rounded-lg" style="background-color: #1A3A4A; border: 2px solid #1CB0F6;">
+          <span class="w-6 h-6 rounded-full text-white text-sm flex items-center justify-center font-bold" style="background-color: #1CB0F6;">${index + 1}</span>
           <span class="flex-1 text-white">${event}</span>
           <button type="button"
-                  class="text-gray-400 hover:text-red-500 transition"
+                  class="text-gray-400 hover:text-red-500 transition cursor-pointer"
                   data-action="click->sequence-story#removeFromSequence"
                   data-index="${index}">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

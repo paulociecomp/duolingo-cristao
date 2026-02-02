@@ -20,14 +20,14 @@ export default class extends Controller {
     // Deselect previous left
     this.leftItemTargets.forEach(item => {
       if (!this.matchedLeft.has(item.dataset.index)) {
-        item.classList.remove("border-[#1CB0F6]", "bg-[#1A3A4A]")
-        item.classList.add("border-[#37464F]", "bg-[#1A2C32]")
+        item.style.borderColor = "#37464F"
+        item.style.backgroundColor = "#1A2C32"
       }
     })
 
     // Select current
-    button.classList.remove("border-[#37464F]", "bg-[#1A2C32]")
-    button.classList.add("border-[#1CB0F6]", "bg-[#1A3A4A]")
+    button.style.borderColor = "#1CB0F6"
+    button.style.backgroundColor = "#1A3A4A"
     this.selectedLeft = { index, value: button.dataset.value }
   }
 
@@ -47,9 +47,13 @@ export default class extends Controller {
     this.matchedRight.add(index)
 
     // Style matched items
-    leftBtn.classList.remove("border-[#1CB0F6]")
-    leftBtn.classList.add("border-[#58CC02]", "bg-[#1A3A2A]", "opacity-75")
-    button.classList.add("border-[#58CC02]", "bg-[#1A3A2A]", "opacity-75")
+    leftBtn.style.borderColor = "#58CC02"
+    leftBtn.style.backgroundColor = "#1A3A2A"
+    leftBtn.style.opacity = "0.75"
+
+    button.style.borderColor = "#58CC02"
+    button.style.backgroundColor = "#1A3A2A"
+    button.style.opacity = "0.75"
 
     this.selectedLeft = null
     this.updateMatchCount()

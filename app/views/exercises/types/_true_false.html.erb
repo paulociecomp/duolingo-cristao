@@ -1,12 +1,12 @@
 <div data-controller="true-false" data-true-false-lesson-id-value="<%= exercise.lesson_id %>" data-true-false-exercise-id-value="<%= exercise.id %>">
-  <div class="mb-8">
+  <div class="mb-8 text-center">
     <h2 class="text-xl font-bold text-white mb-6">Verdadeiro ou Falso?</h2>
 
-    <div class="flex items-start gap-3 mb-6">
+    <div class="flex items-start gap-3 justify-center mb-6">
       <div class="w-16 h-16 rounded-full bg-[#1A2C32] flex items-center justify-center text-3xl flex-shrink-0">
         🤔
       </div>
-      <div class="bg-[#1A2C32] rounded-2xl rounded-tl-none px-4 py-3 flex-1">
+      <div class="bg-[#1A2C32] rounded-2xl rounded-tl-none px-4 py-3 text-left max-w-lg">
         <p class="text-white text-lg">"<%= exercise.content["statement"] %>"</p>
         <% if exercise.content["reference"].present? %>
           <p class="text-gray-400 text-sm mt-2"><%= exercise.content["reference"] %></p>
@@ -15,9 +15,9 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-4" data-true-false-target="options">
+  <div class="grid grid-cols-2 gap-4 max-w-md mx-auto" data-true-false-target="options">
     <button type="button"
-            class="p-6 bg-[#1A2C32] border-2 border-[#37464F] rounded-2xl hover:border-green-500 transition-all duration-200 focus:outline-none"
+            class="p-6 bg-[#1A2C32] border-2 border-[#37464F] rounded-2xl hover:border-[#58CC02] transition-all duration-200 focus:outline-none cursor-pointer"
             data-action="click->true-false#select"
             data-true-false-target="option"
             data-value="true">
@@ -26,7 +26,7 @@
     </button>
 
     <button type="button"
-            class="p-6 bg-[#1A2C32] border-2 border-[#37464F] rounded-2xl hover:border-red-500 transition-all duration-200 focus:outline-none"
+            class="p-6 bg-[#1A2C32] border-2 border-[#37464F] rounded-2xl hover:border-[#FF4B4B] transition-all duration-200 focus:outline-none cursor-pointer"
             data-action="click->true-false#select"
             data-true-false-target="option"
             data-value="false">

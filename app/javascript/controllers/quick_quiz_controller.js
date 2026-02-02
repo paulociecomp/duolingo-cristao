@@ -16,7 +16,7 @@ export default class extends Controller {
       this.timerTarget.textContent = this.timeRemaining
 
       if (this.timeRemaining <= 10) {
-        this.timerTarget.classList.add("text-red-600", "animate-pulse")
+        this.timerTarget.style.color = "#FF4B4B"
       }
 
       if (this.timeRemaining <= 0) {
@@ -34,14 +34,14 @@ export default class extends Controller {
     // Deselect other options for this question
     this.optionTargets.forEach(opt => {
       if (opt.dataset.question === questionIndex) {
-        opt.classList.remove("border-[#1CB0F6]", "bg-[#1A3A4A]")
-        opt.classList.add("border-[#37464F]", "bg-[#1A2C32]")
+        opt.style.borderColor = "#37464F"
+        opt.style.backgroundColor = "#131F24"
       }
     })
 
     // Select this option
-    button.classList.remove("border-[#37464F]", "bg-[#1A2C32]")
-    button.classList.add("border-[#1CB0F6]", "bg-[#1A3A4A]")
+    button.style.borderColor = "#1CB0F6"
+    button.style.backgroundColor = "#1A3A4A"
 
     this.answers[questionIndex] = value
     this.updateAnsweredCount()

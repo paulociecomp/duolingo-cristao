@@ -1,17 +1,17 @@
 <div data-controller="multiple-choice" data-multiple-choice-lesson-id-value="<%= exercise.lesson_id %>" data-multiple-choice-exercise-id-value="<%= exercise.id %>">
-  <div class="mb-8">
+  <div class="mb-8 text-center">
     <h2 class="text-xl font-bold text-white mb-6">
       <%= exercise.content["question"] %>
     </h2>
 
     <% if exercise.content["verse"].present? %>
-      <div class="flex items-start gap-3 mb-6">
+      <div class="flex items-start gap-3 justify-center mb-6">
         <div class="w-16 h-16 rounded-full bg-[#1A2C32] flex items-center justify-center text-3xl flex-shrink-0">
           📖
         </div>
-        <div class="bg-[#1A2C32] rounded-2xl rounded-tl-none px-4 py-3 flex-1">
+        <div class="bg-[#1A2C32] rounded-2xl rounded-tl-none px-4 py-3 text-left max-w-lg">
           <div class="flex items-center gap-2 mb-1">
-            <span class="text-blue-400">🔊</span>
+            <span class="text-[#1CB0F6]">🔊</span>
           </div>
           <p class="text-white">"<%= exercise.content["verse"] %>"</p>
           <% if exercise.content["reference"].present? %>
@@ -22,10 +22,10 @@
     <% end %>
   </div>
 
-  <div class="space-y-3" data-multiple-choice-target="options">
+  <div class="space-y-3 max-w-md mx-auto" data-multiple-choice-target="options">
     <% exercise.content["options"].each do |option| %>
       <button type="button"
-              class="w-full text-left p-4 bg-[#1A2C32] border-2 border-[#37464F] rounded-2xl text-white hover:border-[#4A5D66] transition-all duration-200 focus:outline-none"
+              class="w-full text-left p-4 bg-[#1A2C32] border-2 border-[#37464F] rounded-2xl text-white hover:border-[#4A5D66] transition-all duration-200 focus:outline-none cursor-pointer"
               data-action="click->multiple-choice#select"
               data-multiple-choice-target="option"
               data-value="<%= option %>">

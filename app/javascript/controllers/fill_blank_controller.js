@@ -6,11 +6,14 @@ export default class extends Controller {
 
   connect() {
     this.selectedWord = null
+    console.log("Fill blank controller connected", this.element)
   }
 
   selectWord(event) {
+    console.log("selectWord called", event.currentTarget)
     const button = event.currentTarget
     const word = button.dataset.word
+    console.log("Word selected:", word)
 
     // If clicking the same word, deselect it
     if (this.selectedWord === word) {
@@ -22,36 +25,55 @@ export default class extends Controller {
     if (this.selectedWord) {
       this.wordTargets.forEach(w => {
         if (w.dataset.word === this.selectedWord) {
-          w.classList.remove("border-[#1CB0F6]", "bg-[#1A3A4A]", "opacity-50")
-          w.classList.add("border-[#37464F]", "bg-[#1A2C32]")
+          w.style.borderColor = "#37464F"
+          w.style.backgroundColor = "#1A2C32"
+          w.style.opacity = "1"
         }
       })
     }
 
     // Select new word
-    button.classList.remove("border-[#37464F]", "bg-[#1A2C32]")
-    button.classList.add("border-[#1CB0F6]", "bg-[#1A3A4A]", "opacity-50")
+    button.style.borderColor = "#1CB0F6"
+    button.style.backgroundColor = "#1A3A4A"
+    button.style.opacity = "0.7"
 
     this.selectedWord = word
-    this.answerTarget.value = word
-    this.blankTextTarget.textContent = word
+
+    if (this.hasAnswerTarget) {
+      this.answerTarget.value = word
+      console.log("Answer set to:", word)
+    }
+
+    if (this.hasBlankTextTarget) {
+      this.blankTextTarget.textContent = word
+      console.log("Blank text set to:", word)
+    }
 
     // Enable submit
     const exerciseController = this.application.getControllerForElementAndIdentifier(
       document.querySelector('[data-controller="exercise"]'),
       'exercise'
     )
+    console.log("Exercise controller found:", exerciseController)
     if (exerciseController) {
       exerciseController.enableSubmit()
     }
   }
 
   deselectWord(button, word) {
-    button.classList.remove("border-[#1CB0F6]", "bg-[#1A3A4A]", "opacity-50")
-    button.classList.add("border-[#37464F]", "bg-[#1A2C32]")
+    button.style.borderColor = "#37464F"
+    button.style.backgroundColor = "#1A2C32"
+    button.style.opacity = "1"
+
     this.selectedWord = null
-    this.answerTarget.value = ""
-    this.blankTextTarget.innerHTML = "&nbsp;"
+
+    if (this.hasAnswerTarget) {
+      this.answerTarget.value = ""
+    }
+
+    if (this.hasBlankTextTarget) {
+      this.blankTextTarget.innerHTML = "&nbsp;"
+    }
 
     const exerciseController = this.application.getControllerForElementAndIdentifier(
       document.querySelector('[data-controller="exercise"]'),

@@ -17,12 +17,14 @@ export default class extends Controller {
     if (wordIndex > -1) {
       // Remove from selected
       this.selectedWords.splice(wordIndex, 1)
-      button.classList.remove("opacity-50", "cursor-not-allowed")
+      button.style.opacity = "1"
+      button.style.cursor = "pointer"
       button.disabled = false
     } else {
       // Add to selected
       this.selectedWords.push(word)
-      button.classList.add("opacity-50", "cursor-not-allowed")
+      button.style.opacity = "0.5"
+      button.style.cursor = "not-allowed"
       button.disabled = true
     }
 
@@ -39,7 +41,8 @@ export default class extends Controller {
     // Re-enable the word button
     this.wordTargets.forEach(btn => {
       if (btn.dataset.word === word && btn.disabled) {
-        btn.classList.remove("opacity-50", "cursor-not-allowed")
+        btn.style.opacity = "1"
+        btn.style.cursor = "pointer"
         btn.disabled = false
       }
     })
@@ -54,11 +57,12 @@ export default class extends Controller {
       this.placeholderTarget.classList.add("hidden")
       this.selectedWordsTarget.innerHTML = this.selectedWords.map((word, index) => `
         <button type="button"
-                class="px-4 py-2 bg-[#1A3A4A] border-2 border-[#1CB0F6] rounded-lg font-medium text-white hover:bg-[#1A4A5A] transition"
+                class="px-4 py-2 rounded-lg font-medium text-white hover:opacity-80 transition cursor-pointer"
+                style="background-color: #1A3A4A; border: 2px solid #1CB0F6;"
                 data-action="click->order-words#removeWord"
                 data-index="${index}">
           ${word}
-          <span class="ml-1 text-[#1CB0F6]">×</span>
+          <span class="ml-1" style="color: #1CB0F6;">×</span>
         </button>
       `).join("")
     } else {

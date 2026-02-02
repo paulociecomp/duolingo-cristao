@@ -1,19 +1,44 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["submitButton", "answer"]
+  static targets = ["submitButton", "skipButton", "answer"]
   static values = { type: String }
 
   connect() {
     this.submitted = false
+    console.log("Exercise controller connected")
   }
 
   enableSubmit() {
-    this.submitButtonTarget.disabled = false
+    if (this.hasSubmitButtonTarget) {
+      this.submitButtonTarget.disabled = false
+    }
   }
 
   disableSubmit() {
-    this.submitButtonTarget.disabled = true
+    if (this.hasSubmitButtonTarget) {
+      this.submitButtonTarget.disabled = true
+    }
+  }
+
+  skip() {
+    if (this.submitted) return
+
+    this.submitted = true
+
+    const form = document.createElement('form')
+    form.method = 'POST'
+    form.action = window.location.href + '/skip'
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+    const csrfInput = document.createElement('input')
+    csrfInput.type = 'hidden'
+    csrfInput.name = 'authenticity_token'
+    csrfInput.value = csrfToken
+    form.appendChild(csrfInput)
+
+    document.body.appendChild(form)
+    form.requestSubmit()
   }
 
   submit() {
