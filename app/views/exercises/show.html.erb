@@ -1,0 +1,58 @@
+<div class="min-h-screen flex flex-col" data-controller="exercise" data-exercise-type-value="<%= @exercise.exercise_type %>">
+  <!-- Header -->
+  <div class="px-4 py-3 flex items-center gap-4">
+    <%= link_to lesson_path(@lesson), class: "text-gray-400 hover:text-gray-200 transition", data: { turbo_confirm: "Tem certeza que deseja sair? Seu progresso nesta lição será perdido." } do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    <% end %>
+
+    <div class="flex-1">
+      <div class="w-full bg-[#37464F] rounded-full h-3 overflow-hidden">
+        <div class="bg-[#FFC800] h-3 rounded-full transition-all duration-500" style="width: <%= @progress %>%"></div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-1">
+      <span class="text-red-500 text-xl">❤️</span>
+      <span class="font-bold text-red-500"><%= current_user.lives %></span>
+    </div>
+  </div>
+
+  <!-- Exercise Content -->
+  <div class="flex-1 flex flex-col px-4">
+    <div class="flex-1 py-6">
+      <%= render "exercises/types/#{@exercise.exercise_type}", exercise: @exercise %>
+    </div>
+  </div>
+
+  <!-- Feedback Area -->
+  <div id="exercise-feedback"></div>
+
+  <!-- Action Bar -->
+  <div class="px-4 pb-6 pt-2 space-y-3">
+    <button type="button"
+            class="w-full bg-[#37464F] text-[#56696F] font-bold py-4 px-6 rounded-2xl transition uppercase tracking-wide disabled:opacity-50"
+            data-exercise-target="skipButton"
+            data-action="click->exercise#skip">
+      Pular
+    </button>
+    <button type="button"
+            class="w-full bg-[#3C3C3C] text-[#6B6B6B] font-bold py-4 px-6 rounded-2xl transition uppercase tracking-wide disabled:cursor-not-allowed exercise-submit-btn"
+            data-exercise-target="submitButton"
+            data-action="click->exercise#submit"
+            disabled>
+      Verificar
+    </button>
+  </div>
+</div>
+
+<style>
+  .exercise-submit-btn:not(:disabled) {
+    background-color: #FFC800;
+    color: #000;
+  }
+  .exercise-submit-btn:not(:disabled):hover {
+    background-color: #E6B400;
+  }
+</style>

@@ -1,0 +1,58 @@
+<div class="max-w-4xl mx-auto">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Trilhas de Estudo</h1>
+    <p class="text-gray-600">Escolha uma trilha e comece sua jornada na Palavra de Deus</p>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <% @tracks.each do |track| %>
+      <% progress = @user_progresses[track.id] %>
+      <%= link_to track_path(track.slug), class: "block group" do %>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg hover:border-indigo-200 transition-all duration-200">
+          <div class="p-6" style="background: linear-gradient(135deg, <%= track.color %>22, <%= track.color %>11);">
+            <div class="flex items-start justify-between">
+              <div class="text-5xl mb-4"><%= track.icon %></div>
+              <% if progress %>
+                <div class="bg-white/80 backdrop-blur rounded-full px-3 py-1 text-sm font-medium" style="color: <%= track.color %>;">
+                  <%= progress.completion_percentage %>%
+                </div>
+              <% end %>
+            </div>
+            <h2 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-indigo-600 transition"><%= track.name %></h2>
+            <p class="text-gray-600 text-sm"><%= track.description %></p>
+          </div>
+
+          <div class="px-6 py-4 bg-gray-50 border-t border-gray-100">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-500">
+                <span class="font-medium text-gray-700"><%= track.units.size %></span> unidades
+              </span>
+              <span class="text-gray-500">
+                <span class="font-medium text-gray-700"><%= track.total_lessons %></span> lições
+              </span>
+              <span class="text-amber-500 font-medium">
+                +<%= track.total_xp %> XP
+              </span>
+            </div>
+
+            <% if progress && progress.completed_lessons_count > 0 %>
+              <div class="mt-3">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="rounded-full h-2 transition-all duration-300" style="width: <%= progress.completion_percentage %>%; background-color: <%= track.color %>;"></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @tracks.empty? %>
+    <div class="text-center py-12">
+      <div class="text-6xl mb-4">📚</div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-2">Nenhuma trilha disponível</h2>
+      <p class="text-gray-600">As trilhas de estudo estão sendo preparadas. Volte em breve!</p>
+    </div>
+  <% end %>
+</div>

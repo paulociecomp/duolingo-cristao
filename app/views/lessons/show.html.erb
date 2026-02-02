@@ -1,0 +1,93 @@
+<div class="max-w-lg mx-auto">
+  <!-- Header -->
+  <div class="mb-8">
+    <%= link_to track_path(@lesson.track.slug), class: "inline-flex items-center text-gray-500 hover:text-gray-700 mb-4" do %>
+      <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Voltar para <%= @lesson.track.name %>
+    <% end %>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center">
+          <span class="text-3xl">📖</span>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-gray-900"><%= @lesson.name %></h1>
+          <p class="text-gray-500 text-sm"><%= @lesson.unit.name %></p>
+        </div>
+      </div>
+
+      <% if @lesson.description.present? %>
+        <p class="text-gray-600 mb-4"><%= @lesson.description %></p>
+      <% end %>
+
+      <div class="flex items-center gap-4 text-sm">
+        <div class="flex items-center gap-1 text-gray-600">
+          <span>📝</span>
+          <span><%= @exercises.size %> exercícios</span>
+        </div>
+        <div class="flex items-center gap-1 text-amber-500">
+          <span>⭐</span>
+          <span>+<%= @lesson.xp_reward %> XP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <% if @completed %>
+    <div class="bg-green-50 border border-green-200 rounded-xl p-6 mb-6 text-center">
+      <div class="text-4xl mb-2">✅</div>
+      <h2 class="text-lg font-bold text-green-800 mb-1">Lição Completa!</h2>
+      <% if @best_attempt %>
+        <p class="text-green-600 text-sm">
+          Melhor pontuação: <%= @best_attempt.score %>%
+          <% if @best_attempt.perfect? %>
+            <span class="ml-1">⭐ Perfeito!</span>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+
+    <%= button_to start_lesson_path(@lesson), method: :post, class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-6 rounded-xl transition mb-4" do %>
+      Praticar Novamente
+    <% end %>
+  <% elsif @attempt %>
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-6 text-center">
+      <div class="text-4xl mb-2">▶️</div>
+      <h2 class="text-lg font-bold text-amber-800 mb-1">Lição em Andamento</h2>
+      <p class="text-amber-600 text-sm">Continue de onde parou</p>
+    </div>
+
+    <% next_exercise = @attempt.user_exercise_attempts.count %>
+    <% next_exercise_obj = @exercises[next_exercise] || @exercises.first %>
+    <%= link_to lesson_exercise_path(@lesson, next_exercise_obj), class: "block w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-4 px-6 rounded-xl transition text-center mb-4" do %>
+      Continuar Lição
+    <% end %>
+  <% else %>
+    <%= button_to start_lesson_path(@lesson), method: :post, class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-6 rounded-xl transition" do %>
+      <div class="flex items-center justify-center gap-2">
+        <span class="text-xl">▶️</span>
+        <span>Iniciar Lição</span>
+      </div>
+    <% end %>
+  <% end %>
+
+  <!-- Exercises Preview -->
+  <div class="mt-8">
+    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Exercícios</h3>
+    <div class="space-y-2">
+      <% @exercises.each_with_index do |exercise, index| %>
+        <div class="flex items-center gap-3 bg-white rounded-lg p-3 border border-gray-200">
+          <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600">
+            <%= index + 1 %>
+          </div>
+          <span class="text-xl"><%= exercise_type_icon(exercise.exercise_type) %></span>
+          <span class="text-sm text-gray-600 capitalize"><%= exercise.exercise_type.humanize %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

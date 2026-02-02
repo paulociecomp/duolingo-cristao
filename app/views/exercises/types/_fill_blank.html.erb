@@ -1,0 +1,44 @@
+<div data-controller="fill-blank" data-fill-blank-lesson-id-value="<%= exercise.lesson_id %>" data-fill-blank-exercise-id-value="<%= exercise.id %>">
+  <div class="mb-8">
+    <h2 class="text-xl font-bold text-white mb-6">Complete o versículo</h2>
+
+    <div class="flex items-start gap-3 mb-6">
+      <div class="w-16 h-16 rounded-full bg-[#1A2C32] flex items-center justify-center text-3xl flex-shrink-0">
+        📖
+      </div>
+      <div class="bg-[#1A2C32] rounded-2xl rounded-tl-none px-4 py-3 flex-1">
+        <p class="text-white text-lg leading-relaxed">
+          <% parts = exercise.content["text"].split("___") %>
+          <% parts.each_with_index do |part, index| %>
+            <%= part %>
+            <% if index < parts.length - 1 %>
+              <span class="inline-block min-w-24 border-b-2 border-[#FFC800] mx-1 text-[#FFC800] font-semibold" data-fill-blank-target="blank">
+                <span data-fill-blank-target="blankText">&nbsp;</span>
+              </span>
+            <% end %>
+          <% end %>
+        </p>
+        <% if exercise.content["reference"].present? %>
+          <p class="text-gray-400 text-sm mt-2"><%= exercise.content["reference"] %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <p class="text-sm font-medium text-gray-400 mb-3">Escolha a palavra correta:</p>
+    <div class="flex flex-wrap gap-2" data-fill-blank-target="wordBank">
+      <% exercise.content["word_bank"].shuffle.each do |word| %>
+        <button type="button"
+                class="px-4 py-2 bg-[#1A2C32] border-2 border-[#37464F] rounded-xl text-white hover:border-[#4A5D66] transition-all duration-200 font-medium"
+                data-action="click->fill-blank#selectWord"
+                data-fill-blank-target="word"
+                data-word="<%= word %>">
+          <%= word %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+  <input type="hidden" name="answer" data-fill-blank-target="answer" data-exercise-target="answer">
+</div>

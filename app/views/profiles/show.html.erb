@@ -1,0 +1,104 @@
+<div class="max-w-2xl mx-auto">
+  <!-- Profile Header -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
+    <div class="flex items-center gap-4 mb-6">
+      <% if current_user.avatar_url.present? %>
+        <img src="<%= current_user.avatar_url %>" alt="<%= current_user.name %>" class="w-20 h-20 rounded-full">
+      <% else %>
+        <div class="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center">
+          <span class="text-3xl font-bold text-indigo-600"><%= current_user.name[0].upcase %></span>
+        </div>
+      <% end %>
+
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900"><%= current_user.name %></h1>
+        <p class="text-gray-500">Membro desde <%= current_user.created_at.strftime("%B %Y") %></p>
+      </div>
+    </div>
+
+    <!-- Level Progress -->
+    <div class="bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl p-4 text-white">
+      <div class="flex items-center justify-between mb-2">
+        <span class="font-bold">Nível <%= current_user.current_level %></span>
+        <span class="text-sm opacity-80"><%= @level_service.xp_in_current_level %> / <%= @level_service.xp_for_level(current_user.current_level) %> XP</span>
+      </div>
+      <div class="w-full bg-white/30 rounded-full h-3">
+        <div class="bg-white rounded-full h-3 transition-all" style="width: <%= @level_service.progress_percentage %>%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+      <div class="text-2xl mb-1">⭐</div>
+      <div class="text-2xl font-bold text-gray-900"><%= number_with_delimiter(current_user.total_xp) %></div>
+      <div class="text-sm text-gray-500">XP Total</div>
+    </div>
+
+    <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+      <div class="text-2xl mb-1">🔥</div>
+      <div class="text-2xl font-bold text-orange-500"><%= current_user.current_streak %></div>
+      <div class="text-sm text-gray-500">Streak Atual</div>
+    </div>
+
+    <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+      <div class="text-2xl mb-1">📚</div>
+      <div class="text-2xl font-bold text-gray-900"><%= @stats[:total_lessons] %></div>
+      <div class="text-sm text-gray-500">Lições</div>
+    </div>
+
+    <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
+      <div class="text-2xl mb-1">💎</div>
+      <div class="text-2xl font-bold text-cyan-500"><%= current_user.gems %></div>
+      <div class="text-sm text-gray-500">Gems</div>
+    </div>
+  </div>
+
+  <!-- Recent Badges -->
+  <% if @recent_badges.any? %>
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold text-gray-900">Conquistas Recentes</h2>
+        <%= link_to achievements_path, class: "text-indigo-600 text-sm hover:underline" do %>
+          Ver todas
+        <% end %>
+      </div>
+
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <% @recent_badges.each do |badge| %>
+          <div class="flex-shrink-0 text-center">
+            <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-3xl mb-2">
+              <%= badge.icon %>
+            </div>
+            <div class="text-xs font-medium text-gray-700 max-w-16 truncate"><%= badge.name %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Track Progress -->
+  <% if @track_progresses.any? %>
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Progresso nas Trilhas</h2>
+
+      <div class="space-y-4">
+        <% @track_progresses.each do |progress| %>
+          <div class="flex items-center gap-4">
+            <div class="text-2xl"><%= progress.track.icon %></div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-medium text-gray-900"><%= progress.track.name %></span>
+                <span class="text-sm text-gray-500"><%= progress.completion_percentage %>%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="rounded-full h-2" style="width: <%= progress.completion_percentage %>%; background-color: <%= progress.track.color %>;"></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

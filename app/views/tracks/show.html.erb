@@ -1,0 +1,104 @@
+<div class="max-w-2xl mx-auto">
+  <!-- Header -->
+  <div class="mb-8">
+    <%= link_to tracks_path, class: "inline-flex items-center text-gray-500 hover:text-gray-700 mb-4" do %>
+      <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Voltar
+    <% end %>
+
+    <div class="flex items-center gap-4 mb-4">
+      <div class="text-5xl"><%= @track.icon %></div>
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900"><%= @track.name %></h1>
+        <p class="text-gray-600"><%= @track.description %></p>
+      </div>
+    </div>
+
+    <% if @progress %>
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-medium text-gray-700">Progresso</span>
+          <span class="text-sm font-bold" style="color: <%= @track.color %>;"><%= @progress.completion_percentage %>%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="rounded-full h-3 transition-all duration-500" style="width: <%= @progress.completion_percentage %>%; background-color: <%= @track.color %>;"></div>
+        </div>
+        <div class="mt-2 text-xs text-gray-500">
+          <%= @progress.completed_lessons_count %> de <%= @track.total_lessons %> lições completas
+        </div>
+      </div>
+    <% else %>
+      <%= button_to start_track_path(@track.slug), method: :post, class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-xl transition" do %>
+        Começar Trilha
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- Units Tree -->
+  <div class="space-y-8">
+    <% @units.each_with_index do |unit, unit_index| %>
+      <div class="relative">
+        <!-- Unit Header -->
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200 mb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center text-xl" style="background-color: <%= @track.color %>22;">
+              <%= unit.icon %>
+            </div>
+            <div>
+              <h2 class="font-bold text-gray-900"><%= unit.name %></h2>
+              <p class="text-sm text-gray-500"><%= unit.lessons.size %> lições</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lessons Path -->
+        <div class="flex flex-col items-center space-y-4">
+          <% unit.lessons.ordered.each_with_index do |lesson, lesson_index| %>
+            <% completed = @completed_lessons.include?(lesson.id) %>
+            <% is_current = @progress&.current_lesson_id == lesson.id %>
+            <% is_locked = !completed && !is_current && lesson_index > 0 && !@completed_lessons.include?(unit.lessons.ordered[lesson_index - 1]&.id) %>
+
+            <div class="relative">
+              <% if lesson_index > 0 %>
+                <div class="absolute left-1/2 -top-4 w-0.5 h-4 <%= completed ? 'bg-green-400' : 'bg-gray-200' %>"></div>
+              <% end %>
+
+              <% if is_locked %>
+                <div class="w-16 h-16 rounded-full bg-gray-100 border-4 border-gray-200 flex items-center justify-center cursor-not-allowed">
+                  <span class="text-2xl">🔒</span>
+                </div>
+              <% else %>
+                <%= link_to lesson_path(lesson), class: "block" do %>
+                  <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-200 transform hover:scale-110 <%= completed ? 'bg-green-500 border-4 border-green-400' : is_current ? 'bg-indigo-500 border-4 border-indigo-400 animate-pulse' : 'bg-gray-200 border-4 border-gray-300 hover:bg-gray-300' %>">
+                    <% if completed %>
+                      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    <% else %>
+                      <span class="text-2xl"><%= is_current ? '▶️' : '📖' %></span>
+                    <% end %>
+                  </div>
+                  <div class="text-center mt-2 max-w-24">
+                    <span class="text-xs font-medium <%= completed ? 'text-green-600' : is_current ? 'text-indigo-600' : 'text-gray-600' %>">
+                      <%= truncate(lesson.name, length: 20) %>
+                    </span>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @units.empty? %>
+    <div class="text-center py-12">
+      <div class="text-6xl mb-4">🚧</div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-2">Trilha em construção</h2>
+      <p class="text-gray-600">Estamos preparando as lições desta trilha. Volte em breve!</p>
+    </div>
+  <% end %>
+</div>

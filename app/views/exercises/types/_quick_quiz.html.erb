@@ -1,0 +1,36 @@
+<div data-controller="quick-quiz" data-quick-quiz-lesson-id-value="<%= exercise.lesson_id %>" data-quick-quiz-exercise-id-value="<%= exercise.id %>" data-quick-quiz-time-limit-value="60">
+  <div class="mb-6">
+    <h2 class="text-xl font-bold text-white mb-4">Quiz Relâmpago</h2>
+    <div class="inline-flex items-center gap-2 bg-[#1A2C32] px-4 py-2 rounded-full border border-[#37464F]">
+      <span class="text-2xl">⏱️</span>
+      <span class="text-2xl font-bold text-[#FFC800]" data-quick-quiz-target="timer">60</span>
+      <span class="text-gray-400">segundos</span>
+    </div>
+  </div>
+
+  <div class="space-y-4" data-quick-quiz-target="questions">
+    <% exercise.content["questions"].each_with_index do |q, q_index| %>
+      <div class="bg-[#1A2C32] rounded-xl border-2 border-[#37464F] p-4" data-quick-quiz-target="question" data-index="<%= q_index %>">
+        <p class="font-medium text-white mb-3"><%= q_index + 1 %>. <%= q["question"] %></p>
+        <div class="grid grid-cols-2 gap-2">
+          <% q["options"].each do |option| %>
+            <button type="button"
+                    class="text-left p-3 bg-[#131F24] border border-[#37464F] rounded-lg hover:border-[#4A5D66] transition text-sm text-white"
+                    data-action="click->quick-quiz#selectAnswer"
+                    data-quick-quiz-target="option"
+                    data-question="<%= q_index %>"
+                    data-value="<%= option %>">
+              <%= option %>
+            </button>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-4 text-center text-sm text-gray-400">
+    <span data-quick-quiz-target="answeredCount">0</span>/<%= exercise.content["questions"].size %> respondidas
+  </div>
+
+  <input type="hidden" name="answer" data-quick-quiz-target="answer" data-exercise-target="answer">
+</div>
