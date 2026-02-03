@@ -51,7 +51,7 @@
     </div>
 
     <!-- Refill Lives -->
-    <div class="bg-[#1A2C32] rounded-xl border border-[#37464F] p-6">
+    <div class="bg-[#1A2C32] rounded-xl border <%= current_user.lives.zero? ? 'border-[#58CC02]' : 'border-[#37464F]' %> p-6">
       <div class="flex items-center gap-4 mb-4">
         <div class="text-4xl">❤️</div>
         <div class="flex-1">
@@ -59,10 +59,14 @@
           <p class="text-sm text-gray-400">Restaura todas as 5 vidas instantaneamente</p>
         </div>
         <div class="text-right">
-          <div class="flex items-center gap-1 text-[#1CB0F6] font-bold">
-            <span>💎</span>
-            <span>50</span>
-          </div>
+          <% if current_user.lives.zero? %>
+            <div class="text-[#58CC02] font-bold">Grátis!</div>
+          <% else %>
+            <div class="flex items-center gap-1 text-[#1CB0F6] font-bold">
+              <span>💎</span>
+              <span>50</span>
+            </div>
+          <% end %>
         </div>
       </div>
 
@@ -75,6 +79,10 @@
           <button class="bg-[#37464F] text-gray-400 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
             Vidas cheias
           </button>
+        <% elsif current_user.lives.zero? %>
+          <%= button_to buy_lives_shop_index_path, method: :post, class: "bg-[#58CC02] hover:bg-[#4CAF00] text-white font-semibold px-4 py-2 rounded-lg transition animate-pulse" do %>
+            Restaurar Grátis
+          <% end %>
         <% elsif current_user.gems < 50 %>
           <button class="bg-[#37464F] text-gray-400 font-semibold px-4 py-2 rounded-lg cursor-not-allowed" disabled>
             Gems insuficientes

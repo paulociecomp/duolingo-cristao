@@ -42,11 +42,14 @@ class LifeService
   end
 
   def refill_lives!(cost_gems: 50)
-    return false if @user.gems < cost_gems
     return false if @user.lives_full?
 
+    # Free refill when lives are completely empty
+    actual_cost = @user.lives.zero? ? 0 : cost_gems
+    return false if @user.gems < actual_cost
+
     @user.update!(
-      gems: @user.gems - cost_gems,
+      gems: @user.gems - actual_cost,
       lives: MAX_LIVES,
       lives_updated_at: nil
     )

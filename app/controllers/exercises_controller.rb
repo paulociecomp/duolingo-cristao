@@ -4,6 +4,7 @@ class ExercisesController < ApplicationController
   before_action :set_lesson
   before_action :set_exercise
   before_action :set_attempt
+  before_action :check_lives
 
   def show
     @exercises = @lesson.exercises.ordered
@@ -83,6 +84,15 @@ class ExercisesController < ApplicationController
       lesson_exercise_path(@lesson, next_exercise)
     else
       complete_lesson_path(@lesson)
+    end
+  end
+
+  def check_lives
+    return if current_user.premium?
+
+    life_service = LifeService.new(current_user)
+    unless life_service.can_play?
+      redirect_to shop_index_path, alert: "Você está sem vidas! Restaure suas vidas para continuar."
     end
   end
 end

@@ -185,12 +185,8 @@ lesson1.exercises.create!([
     position: 7,
     xp_value: 15,
     content: {
-      pairs: [
-        { left: "Gabriel", right: "Anjo mensageiro" },
-        { left: "Maria", right: "Mãe de Jesus" },
-        { left: "José", right: "Noivo de Maria" },
-        { left: "Isabel", right: "Prima de Maria" }
-      ]
+      left: ["Gabriel", "Maria", "José", "Isabel"],
+      right: ["Anjo mensageiro", "Mãe de Jesus", "Noivo de Maria", "Prima de Maria"]
     },
     correct_answer: { pairs: [["Gabriel", "Anjo mensageiro"], ["Maria", "Mãe de Jesus"], ["José", "Noivo de Maria"], ["Isabel", "Prima de Maria"]] }
   },
@@ -319,12 +315,8 @@ lesson2.exercises.create!([
     position: 8,
     xp_value: 15,
     content: {
-      pairs: [
-        { left: "Manjedoura", right: "Berço de Jesus" },
-        { left: "César Augusto", right: "Ordenou o censo" },
-        { left: "Belém", right: "Cidade de Davi" },
-        { left: "Pastores", right: "Primeiros visitantes" }
-      ]
+      left: ["Manjedoura", "César Augusto", "Belém", "Pastores"],
+      right: ["Berço de Jesus", "Ordenou o censo", "Cidade de Davi", "Primeiros visitantes"]
     },
     correct_answer: { pairs: [["Manjedoura", "Berço de Jesus"], ["César Augusto", "Ordenou o censo"], ["Belém", "Cidade de Davi"], ["Pastores", "Primeiros visitantes"]] }
   },
@@ -408,12 +400,8 @@ lesson3.exercises.create!([
     position: 5,
     xp_value: 15,
     content: {
-      pairs: [
-        { left: "Ouro", right: "Presente para um rei" },
-        { left: "Incenso", right: "Símbolo de divindade" },
-        { left: "Mirra", right: "Usada em sepultamentos" },
-        { left: "Estrela", right: "Guiou os magos" }
-      ]
+      left: ["Ouro", "Incenso", "Mirra", "Estrela"],
+      right: ["Presente para um rei", "Símbolo de divindade", "Usada em sepultamentos", "Guiou os magos"]
     },
     correct_answer: { pairs: [["Ouro", "Presente para um rei"], ["Incenso", "Símbolo de divindade"], ["Mirra", "Usada em sepultamentos"], ["Estrela", "Guiou os magos"]] }
   },
@@ -555,12 +543,8 @@ lesson4.exercises.create!([
     position: 7,
     xp_value: 15,
     content: {
-      pairs: [
-        { left: "Deus Pai", right: "Voz dos céus" },
-        { left: "Deus Filho", right: "Foi batizado" },
-        { left: "Espírito Santo", right: "Desceu como pomba" },
-        { left: "João Batista", right: "Batizou Jesus" }
-      ]
+      left: ["Deus Pai", "Deus Filho", "Espírito Santo", "João Batista"],
+      right: ["Voz dos céus", "Foi batizado", "Desceu como pomba", "Batizou Jesus"]
     },
     correct_answer: { pairs: [["Deus Pai", "Voz dos céus"], ["Deus Filho", "Foi batizado"], ["Espírito Santo", "Desceu como pomba"], ["João Batista", "Batizou Jesus"]] }
   },
@@ -664,12 +648,8 @@ lesson5.exercises.create!([
     position: 6,
     xp_value: 15,
     content: {
-      pairs: [
-        { left: "Pedro", right: "Também chamado Simão" },
-        { left: "Mateus", right: "Cobrador de impostos" },
-        { left: "Judas Iscariotes", right: "O que traiu Jesus" },
-        { left: "Tomé", right: "Também chamado Dídimo" }
-      ]
+      left: ["Pedro", "Mateus", "Judas Iscariotes", "Tomé"],
+      right: ["Também chamado Simão", "Cobrador de impostos", "O que traiu Jesus", "Também chamado Dídimo"]
     },
     correct_answer: { pairs: [["Pedro", "Também chamado Simão"], ["Mateus", "Cobrador de impostos"], ["Judas Iscariotes", "O que traiu Jesus"], ["Tomé", "Também chamado Dídimo"]] }
   },
@@ -777,12 +757,8 @@ lesson6.exercises.create!([
     position: 5,
     xp_value: 15,
     content: {
-      pairs: [
-        { left: "Pobres de espírito", right: "Deles é o Reino dos céus" },
-        { left: "Os mansos", right: "Herdarão a terra" },
-        { left: "Os misericordiosos", right: "Alcançarão misericórdia" },
-        { left: "Os puros de coração", right: "Verão a Deus" }
-      ]
+      left: ["Pobres de espírito", "Os mansos", "Os misericordiosos", "Os puros de coração"],
+      right: ["Deles é o Reino dos céus", "Herdarão a terra", "Alcançarão misericórdia", "Verão a Deus"]
     },
     correct_answer: { pairs: [["Pobres de espírito", "Deles é o Reino dos céus"], ["Os mansos", "Herdarão a terra"], ["Os misericordiosos", "Alcançarão misericórdia"], ["Os puros de coração", "Verão a Deus"]] }
   },
