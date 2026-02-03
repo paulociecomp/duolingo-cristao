@@ -516,11 +516,20 @@ total_exercises = Exercise.count
 total_lessons = Lesson.count
 total_units = Unit.count
 
-puts "\n=== Resumo dos Seeds ==="
+# Load expanded lessons
+load Rails.root.join("db/seeds/expanded_lessons.rb")
+
+# Load expanded Old Testament
+load Rails.root.join("db/seeds/antigo_testamento_expanded.rb")
+
+# Load Old Testament complement (complete 5 lessons per unit)
+load Rails.root.join("db/seeds/antigo_testamento_complemento.rb")
+
+puts "\n=== Resumo Final dos Seeds ==="
 puts "  Trilhas: #{Track.count}"
-puts "  Unidades: #{total_units}"
-puts "  Lições: #{total_lessons}"
-puts "  Exercícios: #{total_exercises}"
+puts "  Unidades: #{Unit.count}"
+puts "  Lições: #{Lesson.count}"
+puts "  Exercícios: #{Exercise.count}"
 puts "  Ligas: #{League.count}"
 puts "  Badges: #{Badge.count}"
 puts "  Missões: #{DailyMission.count}"
