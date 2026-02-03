@@ -157,6 +157,72 @@ lesson1.exercises.create!([
       reference: "Lucas 1:38"
     },
     correct_answer: { order: ["Eis", "aqui", "a", "serva", "do", "Senhor"] }
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 5,
+    xp_value: 10,
+    content: {
+      question: "Em qual cidade Maria morava quando o anjo apareceu?",
+      options: ["Nazaré", "Belém", "Jerusalém", "Cafarnaum"]
+    },
+    correct_answer: { value: "Nazaré" },
+    explanation: "O anjo Gabriel foi enviado a uma cidade da Galileia chamada Nazaré (Lucas 1:26)."
+  },
+  {
+    exercise_type: :true_false,
+    position: 6,
+    xp_value: 10,
+    content: {
+      statement: "Isabel, prima de Maria, também estava grávida quando o anjo visitou Maria",
+      reference: "Lucas 1:36"
+    },
+    correct_answer: { value: "true" },
+    explanation: "O anjo disse a Maria que Isabel, sua parenta, também havia concebido um filho na velhice."
+  },
+  {
+    exercise_type: :connect_pairs,
+    position: 7,
+    xp_value: 15,
+    content: {
+      pairs: [
+        { left: "Gabriel", right: "Anjo mensageiro" },
+        { left: "Maria", right: "Mãe de Jesus" },
+        { left: "José", right: "Noivo de Maria" },
+        { left: "Isabel", right: "Prima de Maria" }
+      ]
+    },
+    correct_answer: { pairs: [["Gabriel", "Anjo mensageiro"], ["Maria", "Mãe de Jesus"], ["José", "Noivo de Maria"], ["Isabel", "Prima de Maria"]] }
+  },
+  {
+    exercise_type: :fill_blank,
+    position: 8,
+    xp_value: 10,
+    content: {
+      text: "O Espírito Santo descerá sobre ti, e a virtude do ___ te cobrirá",
+      word_bank: ["Altíssimo", "Senhor", "Pai", "Criador"],
+      reference: "Lucas 1:35"
+    },
+    correct_answer: { value: "Altíssimo" },
+    explanation: "O anjo explicou que o poder do Altíssimo cobriria Maria."
+  },
+  {
+    exercise_type: :sequence_story,
+    position: 9,
+    xp_value: 15,
+    content: {
+      title: "A Anunciação a Maria",
+      events: [
+        "O anjo Gabriel é enviado a Nazaré",
+        "Gabriel saúda Maria: 'Ave, cheia de graça'",
+        "Maria fica perturbada com a saudação",
+        "O anjo anuncia que ela conceberá um filho",
+        "Maria pergunta: 'Como se fará isto?'",
+        "Maria responde: 'Eis aqui a serva do Senhor'"
+      ],
+      reference: "Lucas 1:26-38"
+    },
+    correct_answer: { order: [0, 1, 2, 3, 4, 5] }
   }
 ])
 
@@ -213,6 +279,72 @@ lesson2.exercises.create!([
       reference: "Lucas 2:14"
     },
     correct_answer: { order: ["Glória", "a", "Deus", "nas", "alturas"] }
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 5,
+    xp_value: 10,
+    content: {
+      question: "Quem ordenou o recenseamento que levou José e Maria a Belém?",
+      options: ["César Augusto", "Herodes", "Pilatos", "Tibério"]
+    },
+    correct_answer: { value: "César Augusto" },
+    explanation: "Naqueles dias saiu um decreto de César Augusto para que todo o mundo fosse recenseado (Lucas 2:1)."
+  },
+  {
+    exercise_type: :true_false,
+    position: 6,
+    xp_value: 10,
+    content: {
+      statement: "José foi a Belém porque era da casa e família de Davi",
+      reference: "Lucas 2:4"
+    },
+    correct_answer: { value: "true" },
+    explanation: "José subiu da Galileia a Belém, cidade de Davi, por ser da casa e família de Davi."
+  },
+  {
+    exercise_type: :fill_blank,
+    position: 7,
+    xp_value: 10,
+    content: {
+      text: "E havia naquela mesma região ___ que estavam no campo",
+      word_bank: ["pastores", "soldados", "comerciantes", "pescadores"],
+      reference: "Lucas 2:8"
+    },
+    correct_answer: { value: "pastores" },
+    explanation: "Pastores estavam vigiando seus rebanhos durante a noite quando o anjo lhes apareceu."
+  },
+  {
+    exercise_type: :connect_pairs,
+    position: 8,
+    xp_value: 15,
+    content: {
+      pairs: [
+        { left: "Manjedoura", right: "Berço de Jesus" },
+        { left: "César Augusto", right: "Ordenou o censo" },
+        { left: "Belém", right: "Cidade de Davi" },
+        { left: "Pastores", right: "Primeiros visitantes" }
+      ]
+    },
+    correct_answer: { pairs: [["Manjedoura", "Berço de Jesus"], ["César Augusto", "Ordenou o censo"], ["Belém", "Cidade de Davi"], ["Pastores", "Primeiros visitantes"]] }
+  },
+  {
+    exercise_type: :sequence_story,
+    position: 9,
+    xp_value: 15,
+    content: {
+      title: "O Nascimento de Jesus",
+      events: [
+        "César Augusto ordena o recenseamento",
+        "José e Maria viajam para Belém",
+        "Não há lugar na hospedaria",
+        "Jesus nasce e é posto na manjedoura",
+        "O anjo anuncia aos pastores",
+        "Os pastores visitam o menino"
+      ],
+      reference: "Lucas 2:1-20"
+    },
+    correct_answer: { order: [0, 1, 2, 3, 4, 5] }
   }
 ])
 
@@ -259,6 +391,82 @@ lesson3.exercises.create!([
       reference: "Mateus 2:11"
     },
     correct_answer: { value: "dádivas" }
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 4,
+    xp_value: 10,
+    content: {
+      question: "De onde vieram os reis magos?",
+      options: ["Do Oriente", "Do Egito", "De Roma", "Da Grécia"]
+    },
+    correct_answer: { value: "Do Oriente" },
+    explanation: "Uns magos vieram do Oriente a Jerusalém perguntando: 'Onde está aquele que é nascido rei dos judeus?' (Mateus 2:1-2)."
+  },
+  {
+    exercise_type: :connect_pairs,
+    position: 5,
+    xp_value: 15,
+    content: {
+      pairs: [
+        { left: "Ouro", right: "Presente para um rei" },
+        { left: "Incenso", right: "Símbolo de divindade" },
+        { left: "Mirra", right: "Usada em sepultamentos" },
+        { left: "Estrela", right: "Guiou os magos" }
+      ]
+    },
+    correct_answer: { pairs: [["Ouro", "Presente para um rei"], ["Incenso", "Símbolo de divindade"], ["Mirra", "Usada em sepultamentos"], ["Estrela", "Guiou os magos"]] }
+  },
+  {
+    exercise_type: :true_false,
+    position: 6,
+    xp_value: 10,
+    content: {
+      statement: "Os magos voltaram a Herodes para contar onde encontraram Jesus",
+      reference: "Mateus 2:12"
+    },
+    correct_answer: { value: "false" },
+    explanation: "Sendo avisados em sonho para não voltarem a Herodes, retiraram-se para a sua terra por outro caminho."
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 7,
+    xp_value: 10,
+    content: {
+      question: "O que os magos fizeram quando encontraram Jesus?",
+      options: ["Prostraram-se e o adoraram", "Apenas deixaram presentes", "Conversaram com José", "Partiram imediatamente"]
+    },
+    correct_answer: { value: "Prostraram-se e o adoraram" },
+    explanation: "Entrando na casa, viram o menino com Maria, e prostrando-se, o adoraram (Mateus 2:11)."
+  },
+  {
+    exercise_type: :fill_blank,
+    position: 8,
+    xp_value: 10,
+    content: {
+      text: "Vimos a sua ___ no Oriente e viemos adorá-lo",
+      word_bank: ["estrela", "glória", "luz", "nuvem"],
+      reference: "Mateus 2:2"
+    },
+    correct_answer: { value: "estrela" }
+  },
+  {
+    exercise_type: :sequence_story,
+    position: 9,
+    xp_value: 15,
+    content: {
+      title: "A Visita dos Magos",
+      events: [
+        "Os magos veem a estrela no Oriente",
+        "Chegam a Jerusalém perguntando pelo rei",
+        "Herodes consulta os sacerdotes",
+        "A estrela os guia até a casa",
+        "Os magos adoram Jesus e oferecem presentes",
+        "Partem por outro caminho, avisados em sonho"
+      ],
+      reference: "Mateus 2:1-12"
+    },
+    correct_answer: { order: [0, 1, 2, 3, 4, 5] }
   }
 ])
 
@@ -307,6 +515,82 @@ lesson4.exercises.create!([
       options: ["Jordão", "Nilo", "Eufrates", "Tigre"]
     },
     correct_answer: { value: "Jordão" }
+  },
+  {
+    exercise_type: :true_false,
+    position: 4,
+    xp_value: 10,
+    content: {
+      statement: "João Batista inicialmente hesitou em batizar Jesus",
+      reference: "Mateus 3:14"
+    },
+    correct_answer: { value: "true" },
+    explanation: "João tentou impedi-lo, dizendo: 'Eu é que preciso ser batizado por ti, e tu vens a mim?'"
+  },
+  {
+    exercise_type: :fill_blank,
+    position: 5,
+    xp_value: 10,
+    content: {
+      text: "Deixa por agora, pois assim nos convém cumprir toda a ___",
+      word_bank: ["justiça", "lei", "vontade", "profecia"],
+      reference: "Mateus 3:15"
+    },
+    correct_answer: { value: "justiça" },
+    explanation: "Jesus respondeu a João que era necessário cumprir toda a justiça."
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 6,
+    xp_value: 10,
+    content: {
+      question: "O que aconteceu com os céus quando Jesus foi batizado?",
+      options: ["Se abriram", "Escureceram", "Trovejaram", "Nada aconteceu"]
+    },
+    correct_answer: { value: "Se abriram" },
+    explanation: "Batizado Jesus, saiu logo da água, e eis que se lhe abriram os céus (Mateus 3:16)."
+  },
+  {
+    exercise_type: :connect_pairs,
+    position: 7,
+    xp_value: 15,
+    content: {
+      pairs: [
+        { left: "Deus Pai", right: "Voz dos céus" },
+        { left: "Deus Filho", right: "Foi batizado" },
+        { left: "Espírito Santo", right: "Desceu como pomba" },
+        { left: "João Batista", right: "Batizou Jesus" }
+      ]
+    },
+    correct_answer: { pairs: [["Deus Pai", "Voz dos céus"], ["Deus Filho", "Foi batizado"], ["Espírito Santo", "Desceu como pomba"], ["João Batista", "Batizou Jesus"]] }
+  },
+  {
+    exercise_type: :order_words,
+    position: 8,
+    xp_value: 15,
+    content: {
+      words: ["Este", "é", "o", "meu", "Filho", "amado"],
+      reference: "Mateus 3:17"
+    },
+    correct_answer: { order: ["Este", "é", "o", "meu", "Filho", "amado"] }
+  },
+  {
+    exercise_type: :sequence_story,
+    position: 9,
+    xp_value: 15,
+    content: {
+      title: "O Batismo de Jesus",
+      events: [
+        "Jesus vai da Galileia ao Jordão",
+        "João tenta impedir o batismo",
+        "Jesus diz que é para cumprir a justiça",
+        "Jesus é batizado no rio",
+        "Os céus se abrem",
+        "O Espírito desce como pomba e a voz do Pai ecoa"
+      ],
+      reference: "Mateus 3:13-17"
+    },
+    correct_answer: { order: [0, 1, 2, 3, 4, 5] }
   }
 ])
 
@@ -352,6 +636,82 @@ lesson5.exercises.create!([
       reference: "Mateus 4:19"
     },
     correct_answer: { value: "pescadores" }
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 4,
+    xp_value: 10,
+    content: {
+      question: "Tiago e João eram filhos de quem?",
+      options: ["Zebedeu", "Jonas", "Alfeu", "Simão"]
+    },
+    correct_answer: { value: "Zebedeu" },
+    explanation: "Tiago e João, filhos de Zebedeu, foram chamados por Jesus enquanto consertavam suas redes (Mateus 4:21)."
+  },
+  {
+    exercise_type: :true_false,
+    position: 5,
+    xp_value: 10,
+    content: {
+      statement: "Mateus era cobrador de impostos antes de seguir Jesus",
+      reference: "Mateus 9:9"
+    },
+    correct_answer: { value: "true" },
+    explanation: "Jesus viu um homem chamado Mateus sentado na coletoria e disse-lhe: 'Segue-me'."
+  },
+  {
+    exercise_type: :connect_pairs,
+    position: 6,
+    xp_value: 15,
+    content: {
+      pairs: [
+        { left: "Pedro", right: "Também chamado Simão" },
+        { left: "Mateus", right: "Cobrador de impostos" },
+        { left: "Judas Iscariotes", right: "O que traiu Jesus" },
+        { left: "Tomé", right: "Também chamado Dídimo" }
+      ]
+    },
+    correct_answer: { pairs: [["Pedro", "Também chamado Simão"], ["Mateus", "Cobrador de impostos"], ["Judas Iscariotes", "O que traiu Jesus"], ["Tomé", "Também chamado Dídimo"]] }
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 7,
+    xp_value: 10,
+    content: {
+      question: "Que poder Jesus deu aos doze apóstolos?",
+      options: ["Expulsar espíritos imundos e curar doenças", "Voar pelos ares", "Criar ouro", "Ler pensamentos"]
+    },
+    correct_answer: { value: "Expulsar espíritos imundos e curar doenças" },
+    explanation: "Jesus deu-lhes poder sobre os espíritos imundos, para os expulsarem, e para curarem toda enfermidade (Mateus 10:1)."
+  },
+  {
+    exercise_type: :fill_blank,
+    position: 8,
+    xp_value: 10,
+    content: {
+      text: "Chamou os seus discípulos e escolheu ___ deles, a quem deu o nome de apóstolos",
+      word_bank: ["doze", "sete", "dez", "cinco"],
+      reference: "Lucas 6:13"
+    },
+    correct_answer: { value: "doze" }
+  },
+  {
+    exercise_type: :sequence_story,
+    position: 9,
+    xp_value: 15,
+    content: {
+      title: "O Chamado dos Discípulos",
+      events: [
+        "Jesus caminha à beira do mar da Galileia",
+        "Chama Pedro e André, que deixam suas redes",
+        "Chama Tiago e João, que deixam seu pai",
+        "Chama Mateus na coletoria",
+        "Passa a noite orando no monte",
+        "Escolhe os doze apóstolos"
+      ],
+      reference: "Mateus 4:18-22; Lucas 6:12-16"
+    },
+    correct_answer: { order: [0, 1, 2, 3, 4, 5] }
   }
 ])
 
@@ -400,6 +760,82 @@ lesson6.exercises.create!([
       reference: "Mateus 5:9"
     },
     correct_answer: { value: "filhos" }
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 4,
+    xp_value: 10,
+    content: {
+      question: "O que herdarão os que têm fome e sede de justiça?",
+      options: ["Serão fartos", "Herdarão a terra", "Verão a Deus", "Alcançarão misericórdia"]
+    },
+    correct_answer: { value: "Serão fartos" },
+    explanation: "Bem-aventurados os que têm fome e sede de justiça, porque serão fartos (Mateus 5:6)."
+  },
+  {
+    exercise_type: :connect_pairs,
+    position: 5,
+    xp_value: 15,
+    content: {
+      pairs: [
+        { left: "Pobres de espírito", right: "Deles é o Reino dos céus" },
+        { left: "Os mansos", right: "Herdarão a terra" },
+        { left: "Os misericordiosos", right: "Alcançarão misericórdia" },
+        { left: "Os puros de coração", right: "Verão a Deus" }
+      ]
+    },
+    correct_answer: { pairs: [["Pobres de espírito", "Deles é o Reino dos céus"], ["Os mansos", "Herdarão a terra"], ["Os misericordiosos", "Alcançarão misericórdia"], ["Os puros de coração", "Verão a Deus"]] }
+  },
+  {
+    exercise_type: :true_false,
+    position: 6,
+    xp_value: 10,
+    content: {
+      statement: "Jesus pregou o Sermão da Montanha sentado em um monte",
+      reference: "Mateus 5:1"
+    },
+    correct_answer: { value: "true" },
+    explanation: "Jesus, vendo as multidões, subiu ao monte e, assentando-se, os seus discípulos aproximaram-se dele."
+  },
+  {
+    exercise_type: :fill_blank,
+    position: 7,
+    xp_value: 10,
+    content: {
+      text: "Bem-aventurados os perseguidos por causa da ___, porque deles é o Reino dos céus",
+      word_bank: ["justiça", "verdade", "fé", "lei"],
+      reference: "Mateus 5:10"
+    },
+    correct_answer: { value: "justiça" }
+  },
+  {
+    exercise_type: :multiple_choice,
+    position: 8,
+    xp_value: 10,
+    content: {
+      question: "O que Jesus disse aos perseguidos por sua causa?",
+      options: ["Alegrai-vos porque é grande o vosso galardão nos céus", "Fugi da perseguição", "Lutai contra os perseguidores", "Escondei-vos dos inimigos"]
+    },
+    correct_answer: { value: "Alegrai-vos porque é grande o vosso galardão nos céus" },
+    explanation: "Alegrai-vos e exultai, porque é grande o vosso galardão nos céus (Mateus 5:12)."
+  },
+  {
+    exercise_type: :sequence_story,
+    position: 9,
+    xp_value: 15,
+    content: {
+      title: "As Bem-aventuranças",
+      events: [
+        "Os pobres de espírito - deles é o Reino dos céus",
+        "Os que choram - serão consolados",
+        "Os mansos - herdarão a terra",
+        "Os que têm fome e sede de justiça - serão fartos",
+        "Os misericordiosos - alcançarão misericórdia",
+        "Os puros de coração - verão a Deus"
+      ],
+      reference: "Mateus 5:3-8"
+    },
+    correct_answer: { order: [0, 1, 2, 3, 4, 5] }
   }
 ])
 
