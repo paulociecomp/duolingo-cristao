@@ -51,6 +51,5 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: duolingo_crente_production
-  username: duolingo_crente
-  password: <%= ENV["DUOLINGO_CRENTE_DATABASE_PASSWORD"] %>
